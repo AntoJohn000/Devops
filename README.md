@@ -39,5 +39,66 @@ Submit the secret message and command(s) given as your answer.
 
 ![e1 3](https://github.com/user-attachments/assets/ea765db4-f294-45a9-9ab3-a43c9423b0c6)
 
+**Exercise 1.4** : Missing dependencies
+Start a Ubuntu image with the process sh -c 'while true; do echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website; done'
+
+If you're on Windows, you'll want to switch the ' and " around: sh -c "while true; do echo 'Input website:'; read website; echo 'Searching..'; sleep 1; curl http://$website; done".
+
+You will notice that a few things required for proper execution are missing. Be sure to remind yourself which flags to use so that the container actually waits for input.
+
+Note also that curl is NOT installed in the container yet. You will have to install it from inside of the container.
+
+Test inputting helsinki.fi into the application. It should respond with something like
+
+<html>
+  <head>
+    <title>301 Moved Permanently</title>
+  </head>
+
+  <body>
+    <h1>Moved Permanently</h1>
+    <p>The document has moved <a href="http://www.helsinki.fi/">here</a>.</p>
+  </body>
+</html>
+
+
+This time return the command you used to start process and the command(s) you used to fix the ensuing problems.
+
+Hint for installing the missing dependencies you could start a new process with docker exec.
+
+This exercise has multiple solutions, if the curl for helsinki.fi works then it's done. Can you figure out other (smart) solutions?
+
+![e1 4](https://github.com/user-attachments/assets/3e375ac9-a6f5-4e2d-a18b-e7eeb01a710f)
+
+docker exec -it <container_id> apt-get update
+docker exec -it <container_id> apt-get install -y curl
+
+
+![e1 4](https://github.com/user-attachments/assets/160e5ce8-970a-4e5c-a85f-5ff3e3b6623b)
+
+
+**Exercise 1.5** : Sizes of images
+In the Exercise 1.3 we used devopsdockeruh/simple-web-service:ubuntu.
+
+Here is the same application but instead of Ubuntu is using Alpine Linux: devopsdockeruh/simple-web-service:alpine.
+
+Pull both images and compare the image sizes. Go inside the Alpine container and make sure the secret message functionality is the same. Alpine version doesn't have bash but it has sh, a more bare-bones shell.
+
+![e1 5](https://github.com/user-attachments/assets/240f476c-7020-4cdd-9122-ee879af94310)
+
+**Exercise 1.6** : Hello Docker Hub
+Run docker run -it devopsdockeruh/pull_exercise.
+
+The command will wait for your input.
+
+Navigate through the Docker hub to find the docs and Dockerfile that was used to create the image.
+
+Read the Dockerfile and/or docs to learn what input will get the application to answer a "secret message".
+
+Submit the secret message and command(s) given to get it as your answer.
+
+
+![1 6](https://github.com/user-attachments/assets/b7823e8d-f088-43a3-887a-d7a8ca39d8a8)
+
 
 
