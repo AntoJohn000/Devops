@@ -1,5 +1,5 @@
-# Devops
-Documentation on devops course
+# DevOps with Docker
+Documentation on Devops course
 
 
 **Exercise 1.1**: Getting started
